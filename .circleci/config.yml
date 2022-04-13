@@ -30,22 +30,22 @@ jobs:
               --stack-name myStack-${CIRCLE_WORKFLOW_ID:0:5} \
               --region $AWS_DEFAULT_REGION
   # Exercise: Config and Deployment
-configure_infrastructure: 
-  docker:
-    - image: python:3.7-alpine3.11
-  steps:
-    - checkout
-    - add_ssh_keys:
-            # You can get this ID in the section where you registered the SSH Key
-            fingerprints: ["c9:22:fc:44:02:94:9b:00:fc:82:f1:26:39:2a:54:b5"] 
-    - run:
-        name: Install Ansible
-        command: |
-          apk add --update ansible
-    - run:
-        name: Run Playbook and Configure server
-        command: |
-          ansible-playbook -i [inventory-file] [playbook-file]
+  configure_infrastructure: 
+    docker:
+      - image: python:3.7-alpine3.11
+    steps:
+      - checkout
+      - add_ssh_keys:
+              # You can get this ID in the section where you registered the SSH Key
+              fingerprints: ["c9:22:fc:44:02:94:9b:00:fc:82:f1:26:39:2a:54:b5"] 
+      - run:
+          name: Install Ansible
+          command: |
+            apk add --update ansible
+      - run:
+          name: Run Playbook and Configure server
+          command: |
+            ansible-playbook -i [inventory-file] [playbook-file]
 
 workflows:
   myworkflow:
