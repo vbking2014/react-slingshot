@@ -67,11 +67,11 @@ jobs:
 workflows:
   myworkflow:
     jobs:
-      - build
-      - create_infrastructure:
-          requires: [build]
-      - configure_infrastructure:
-          requires: [create_infrastructure]
-      - smoke_test:
-          requires: [configure_infrastructure]
+      # - build
+      # - create_infrastructure:
+      #     requires: [build]
+      # - configure_infrastructure:
+      #     requires: [create_infrastructure]
+      - smoke_test
+          
 
